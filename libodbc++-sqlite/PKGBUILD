@@ -1,0 +1,23 @@
+pkgname=libodbc++-sqlite
+pkgver=2.3.0
+pkgrel=1
+pkgdesc="An ORM system for c++ mysql"
+arch=('i686' 'x86_64')
+url="http://www.codesynthesis.com/products/odb/"
+license=('GPLv2')
+depends=()
+makedepends=()
+source=('http://www.codesynthesis.com/download/odb/2.3/libodb-sqlite-2.3.0.tar.bz2')
+sha1sums=('512a124e0b78ae36deee25d595e3e169bd24d216')
+options=()
+
+build() {
+	cd "$srcdir/libodb-sqlite-$pkgver"
+	./configure
+	make
+}
+
+package() {
+	cd "$srcdir/libodb-sqlite-$pkgver"
+	make DESTDIR="${pkgdir}/" install
+}

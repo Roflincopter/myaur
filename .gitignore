@@ -1,0 +1,8 @@
+*.swp
+*.tar.xz
+*.tar.gz
+*.tar.bz2
+*.tar
+*.git
+*/pkg/
+*/src/

@@ -1,0 +1,30 @@
+pkgname=indicator-netspeed
+pkgver=03fa427
+pkgrel=1
+pkgdesc="Unity indicator that resembles the old gnome netspeed applet."
+arch=('i686' 'x86_64')
+url="https://github.com/mgedmin/indicator-netspeed"
+license=('other')
+depends=('libgtop' 'gtk3-ubuntu' 'libappindicator3')
+makedepends=('make')
+source=('git://github.com/Roflincopter/indicator-netspeed.git')
+sha512sums=('SKIP')
+options=()
+install='install'
+
+pkgver() {
+	cd "$srcdir/$pkgname"
+	git describe --long --always | sed -E 's/([^-]*-g)/r\1/;s/-/./g'
+}
+
+build() {
+	cd "$srcdir/$pkgname"
+	make
+}
+
+package() {
+	cd "$srcdir/$pkgname"
+	mkdir -p $pkgdir/usr/bin/
+	mkdir -p $pkgdir/usr/share/glib-2.0/schemas/
+	make DESTDIR="${pkgdir}/" install
+}

@@ -1,0 +1,23 @@
+pkgname=libodbc++
+pkgver=2.3.0
+pkgrel=1
+pkgdesc="An ORM system for c++"
+arch=('i686' 'x86_64')
+url="http://www.codesynthesis.com/products/odb/"
+license=('GPLv2')
+depends=()
+makedepends=()
+source=('http://www.codesynthesis.com/download/odb/2.3/libodb-2.3.0.tar.bz2')
+sha1sums=('eebc7fa706bc598a80439d1d6a798430fcfde23b')
+options=()
+
+build() {
+	cd "$srcdir/libodb-$pkgver"
+	./configure
+	make
+}
+
+package() {
+	cd "$srcdir/libodb-$pkgver"
+	make DESTDIR="${pkgdir}/" install
+}

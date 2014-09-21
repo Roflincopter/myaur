@@ -1,0 +1,17 @@
+pkgname=odbc++
+pkgver=2.3.0
+pkgrel=1
+pkgdesc="The ODBc++ compiler for libodbc++"
+arch=('x86_64')
+url="http://www.codesynthesis.com/products/odb/"
+license=('GPLv2')
+depends=()
+makedepends=()
+source=('http://www.codesynthesis.com/download/odb/2.3/odb-2.3.0-x86_64-linux-gnu.tar.bz2')
+sha1sums=('0a63f284263d68795359e6ce367a43476262d335')
+options=()
+
+package() {
+	cd "$srcdir/odb-$pkgver-$arch-linux-gnu"
+	cp -r * ${pkgdir}/
+}
