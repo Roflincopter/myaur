@@ -1,0 +1,24 @@
+pkgname=dmp
+pkgver=0.1
+pkgrel=1
+pkgdesc="A distriibuted Music player"
+arch=('i686' 'x86_64')
+url="http://brentj.es/projects/dmp"
+depends=()
+makedepends=(cmake)
+source=('git://github.com/roflincopter/dmp.git#branch=develop')
+sha1sums=('SKIP')
+options=()
+
+build() {
+	cd "$srcdir/dmp"
+	git submodule update --init
+	mkdir -p "build"
+	cd "build"
+	cmake ..
+	make
+}
+
+package() {
+	echo "YOLO"
+}
