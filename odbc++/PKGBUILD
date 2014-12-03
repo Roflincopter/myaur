@@ -2,16 +2,23 @@ pkgname=odbc++
 pkgver=2.3.0
 pkgrel=1
 pkgdesc="The ODBc++ compiler for libodbc++"
-arch=('x86_64')
+arch=('i686' 'x86_64')
 url="http://www.codesynthesis.com/products/odb/"
 license=('GPLv2')
 depends=()
 makedepends=()
-source=('http://www.codesynthesis.com/download/odb/2.3/odb-2.3.0-x86_64-linux-gnu.tar.bz2')
-sha1sums=('0a63f284263d68795359e6ce367a43476262d335')
+if test "$CARCH" == x86_64; then
+	source=('http://www.codesynthesis.com/download/odb/2.3/odb-2.3.0-x86_64-linux-gnu.tar.bz2')
+	sha1sums=('0a63f284263d68795359e6ce367a43476262d335')
+elif test "$CARCH" == i686; then
+	source=('http://www.codesynthesis.com/download/odb/2.3/odb-2.3.0-i686-linux-gnu.tar.bz2')
+	sha1sums=('1db06f531400af2cf156fe38bcd691c81b4c4ce4')
+else
+	echo 'unknown architecture found'
+fi
 options=()
 
 package() {
-	cd "$srcdir/odb-$pkgver-$arch-linux-gnu"
+	cd "$srcdir/odb-$pkgver-$CARCH-linux-gnu"
 	cp -r * ${pkgdir}/
 }

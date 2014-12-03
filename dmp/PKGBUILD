@@ -3,8 +3,8 @@ pkgver=0.1
 pkgrel=1
 pkgdesc="A distriibuted Music player"
 arch=('i686' 'x86_64')
-url="http://brentj.es/projects/dmp"
-depends=()
+url="http://brentj.es/Projects/DMP.html"
+depends=('gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-base' 'gstreamer' 'taglib' 'qt5-base' 'boost')
 makedepends=(cmake)
 source=('git://github.com/roflincopter/dmp.git#branch=develop')
 sha1sums=('SKIP')
