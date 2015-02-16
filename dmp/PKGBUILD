@@ -4,7 +4,7 @@ pkgrel=1
 pkgdesc="A distriibuted Music player"
 arch=('i686' 'x86_64')
 url="http://brentj.es/Projects/DMP.html"
-depends=('gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-base' 'gstreamer' 'taglib' 'qt5-base' 'boost')
+depends=('gst-plugins-bad' 'gst-plugins-good' 'gst-plugins-base' 'gstreamer' 'taglib' 'qt5-base' 'boost' 'libsodium')
 makedepends=(cmake)
 source=('git://github.com/roflincopter/dmp.git#branch=develop')
 sha1sums=('SKIP')
@@ -15,7 +15,7 @@ build() {
 	git submodule update --init
 	mkdir -p "build"
 	cd "build"
-	cmake ..
+	cmake .. -DUSE_GPERF=OFF -DUSE_ASAN=off -DUSE_TSAN=off
 	make
 }
 
