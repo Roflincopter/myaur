@@ -20,6 +20,12 @@ options=()
 
 package() {
 	cd "$srcdir/odb-$pkgver-$CARCH-linux-gnu"
-	mkdir -p ${pkgdir}/usr/local/
-	cp -r * ${pkgdir}/usr/local/
+	sharedir=${pkgdir}/usr/share
+	docdir=${sharedir}/doc/odb/
+	mkdir -p ${pkgdir}/usr/share
+	mkdir -p ${pkgdir}/usr/share/doc/odb
+	cp -r bin lib ${pkgdir}/usr
+	cp -r etc ${pkgdir}
+	cp -r man ${sharedir}
+	cp -r doc/* ${docdir}
 }
