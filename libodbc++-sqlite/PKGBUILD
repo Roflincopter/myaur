@@ -13,7 +13,7 @@ options=()
 
 build() {
 	cd "$srcdir/libodb-sqlite-$pkgver"
-	./configure
+	./configure --prefix=/usr/
 	make
 }
 

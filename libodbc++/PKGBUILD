@@ -13,7 +13,7 @@ options=()
 
 build() {
 	cd "$srcdir/libodb-$pkgver"
-	./configure
+	./configure --prefix=/usr
 	make
 }
 
